@@ -1,14 +1,37 @@
-<ion-header>
+<ion-header no-shadow>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Outlive
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-label class="headerLabel">Nombre de survivants</ion-label>
+  <div class="setting">
+  <ion-list radio-group [(ngModel)]="nbSurvivor">
+    <ion-item no-lines>
+      <ion-label>1 joueur</ion-label>
+      <ion-radio checked="false" color="snow" value="1"></ion-radio>
+    </ion-item>
+
+    <ion-item no-lines>
+      <ion-label>2 joueurs</ion-label>
+      <ion-radio checked="false" color="snow" value="2"></ion-radio>
+    </ion-item>
+
+    <ion-item no-lines>
+      <ion-label>3 joueurs</ion-label>
+      <ion-radio checked="false" value="3"color="snow"></ion-radio>
+    </ion-item>
+
+    <ion-item no-lines>
+      <ion-label>4 joueurs</ion-label>
+      <ion-radio checked="true" color="snow" value="4"></ion-radio>
+    </ion-item>
+  </ion-list>
+  </div>
+  <div text-center>
+    <button ion-button outline (click)="onOpenMap()" class="outliveButton">Rock'n roll !</button>
+  </div>
 </ion-content>

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Outlive</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="main"> 
+  <!--<div class="overview">-->
+    <div text-center>
+      <button ion-button outline (click)="onResetTiles()" class="outliveButton">JOUR SUIVANT</button>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <ion-item *ngFor="let i of silentPeakTiles">{{ i.id }} {{ i.tile }}</ion-item>
+        </ion-col>
+        <ion-col col-6>
+          <ion-item *ngFor="let i of blackWoodTiles">{{ i.id }} {{ i.tile }}</ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <ion-item *ngFor="let i of silentPeakDiscardTiles">{{ i.id }} {{ i.tile }}</ion-item>
+        </ion-col>
+        <ion-col col-6>
+          <ion-item *ngFor="let i of blackWoodDiscardTiles">{{ i.id }} {{ i.tile }}</ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <!--</div>-->
+</ion-content>

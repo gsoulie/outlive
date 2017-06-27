@@ -1,3 +1,7 @@
+import { Config } from './../providers/config';
+import { Http } from '@angular/http';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { MapPage } from './../pages/map/map';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -6,11 +10,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { DataProvider } from '../providers/data/data';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    MapPage
   ],
   imports: [
     BrowserModule,
@@ -19,12 +25,17 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    MapPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    ScreenOrientation,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DataProvider,
+    Http,
+    Config
   ]
 })
 export class AppModule {}

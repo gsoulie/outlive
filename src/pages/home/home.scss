@@ -1,3 +1,25 @@
 page-home {
-
+      ion-content{
+        background-image: url('../assets/img/gaz.jpg');
+        -webkit-background-image: url('../assets/img/gaz.jpg');
+        background-repeat: no-repeat;
+        background-size:cover;
+        background-position: center; 
+    }
+    .headerLabel{
+        color: #ffffff;
+        font-size: 16px;
+    }
+    ion-item{
+        background-color: transparent !important;
+        color: #ffffff !important;
+        font-size: 12px !important;
+    }
+    .setting{
+        background-color: rgba(255,255,255,0.2);
+        //opacity: 0.2;
+        border-radius: 10px;
+        border-color: #ffffff;
+        border-width: 2px;
+    }
 }
