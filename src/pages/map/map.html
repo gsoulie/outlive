@@ -11,21 +11,21 @@
     </div>
     <ion-grid>
       <ion-row>
-        <ion-col col-6>
-          <ion-item *ngFor="let i of silentPeakTiles">{{ i.id }} {{ i.tile }}</ion-item>
+        <ion-col col-6 text-center>
+          <button ion-button clear color="snow" (click)="onGetSilentPeakTile()" class="squareButton" [disabled]="silentPeakTiles.length <= 0">SILENT PEAK</button>
         </ion-col>
-        <ion-col col-6>
-          <ion-item *ngFor="let i of blackWoodTiles">{{ i.id }} {{ i.tile }}</ion-item>
+        <ion-col col-6 text-center>
+          <button ion-button clear color="snow" (click)="onGetBlackwoodTile()" class="squareButton" [disabled]="blackWoodTiles.length <= 0">BLACKWOOD</button>
         </ion-col>
       </ion-row>
     </ion-grid>
     <ion-grid>
       <ion-row>
         <ion-col col-6>
-          <ion-item *ngFor="let i of silentPeakDiscardTiles">{{ i.id }} {{ i.tile }}</ion-item>
+          <ion-item *ngFor="let i of silentPeakDiscardTiles" class="tile" no-lines>{{ i.tile }}</ion-item>
         </ion-col>
         <ion-col col-6>
-          <ion-item *ngFor="let i of blackWoodDiscardTiles">{{ i.id }} {{ i.tile }}</ion-item>
+          <ion-item *ngFor="let i of blackWoodDiscardTiles"  class="tile" no-lines>{{ i.tile }}</ion-item>
         </ion-col>
       </ion-row>
     </ion-grid>

@@ -23,9 +23,11 @@ export class MapPage implements OnInit{
 
   ngOnInit(){
     this.nbSurvivor = this.navParams.get("nbSurvivor") || "4";
+    
     //this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
   }
   ionViewDidLoad() {
+    this.onResetTiles();
     console.log('ionViewDidLoad MapPage');
   }
   onResetTiles(){
@@ -45,14 +47,36 @@ export class MapPage implements OnInit{
    */
   onGetSilentPeakTile(){
     // Choisir la tuile en faisant un random sur le nombre de tuiles de la pile 
+    if(this.silentPeakTiles.length > 0){
+      let tileIndex = Math.floor(Math.random() * this.silentPeakTiles.length) + 1; // chiffre random entre 1 et 10
+      tileIndex--;
+    
+      // Afficher la tuile en surbrillance
 
-    // ajouter la tuile piochées dans la silentPeakDiscardTile
+      // ajouter la tuile piochées dans la silentPeakDiscardTile
+      this.silentPeakDiscardTiles.push(this.silentPeakTiles[tileIndex]);
+      this.silentPeakTiles.splice(tileIndex,1);
+    
+      // Désactiver le bouton quand la pile est vide
+    }
   }
 
   /**
    * piocher une tuile à blackwood
    */
   onGetBlackwoodTile(){
+    // Choisir la tuile en faisant un random sur le nombre de tuiles de la pile 
+    if(this.blackWoodTiles.length > 0){
+      let tileIndex = Math.floor(Math.random() * this.blackWoodTiles.length) + 1; // chiffre random entre 1 et 10
+      tileIndex--;
+    
+      // Afficher la tuile en surbrillance
 
+      // ajouter la tuile piochées dans la silentPeakDiscardTile
+      this.blackWoodDiscardTiles.push(this.blackWoodTiles[tileIndex]);
+      this.blackWoodTiles.splice(tileIndex,1);
+    
+      // Désactiver le bouton quand la pile est vide
+    }
   }
 }

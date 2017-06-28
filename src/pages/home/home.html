@@ -1,12 +1,13 @@
 <ion-header no-shadow>
   <ion-navbar>
     <ion-title>
-      Outlive
+      Outlive Tile Picker
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <div class="form">
   <ion-label class="headerLabel">Nombre de survivants</ion-label>
   <div class="setting">
   <ion-list radio-group [(ngModel)]="nbSurvivor">
@@ -32,6 +33,7 @@
   </ion-list>
   </div>
   <div text-center>
-    <button ion-button outline (click)="onOpenMap()" class="outliveButton">Rock'n roll !</button>
+    <button ion-button outline (click)="onOpenMap()" class="outliveButton">C'EST PARTI</button>
+  </div>
   </div>
 </ion-content>

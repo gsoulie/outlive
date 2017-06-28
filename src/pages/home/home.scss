@@ -8,12 +8,13 @@ page-home {
     }
     .headerLabel{
         color: #ffffff;
-        font-size: 16px;
+        font-size: 18px;
+        text-align: center;
     }
     ion-item{
         background-color: transparent !important;
         color: #ffffff !important;
-        font-size: 12px !important;
+        font-size: 14px !important;
     }
     .setting{
         background-color: rgba(255,255,255,0.2);
@@ -21,5 +22,11 @@ page-home {
         border-radius: 10px;
         border-color: #ffffff;
         border-width: 2px;
+    }
+    .form{
+        position: absolute;
+        bottom: 30%;
+        left: 50px;
+        right: 50px;
     }
 }
