@@ -1,33 +1,60 @@
-<ion-header>
+<!--<ion-header>
   <ion-navbar>
-    <ion-title>Outlive Tile Picker</ion-title>
+    <ion-title>Retour</ion-title>
   </ion-navbar>
 </ion-header>
-
+-->
 <ion-content class="main"> 
-  <!--<div class="overview">-->
-    <div text-center>
+  <div class="overview">
+    <button ion-button class="backbutton" (click)="back()"
+    text-center clear icon-only color="snow">
+      <ion-icon color="snow" name="md-arrow-back"></ion-icon>
+      <ion-label color="snow">Retour</ion-label>
+    </button>
+   <!-- <div text-center>
       <button ion-button outline (click)="onResetTiles()" class="outliveButton">JOUR SUIVANT</button>
-    </div>
+    </div>-->
     <ion-grid>
       <ion-row>
-        <ion-col col-6 text-center>
-          <button ion-button clear color="snow" (click)="onGetSilentPeakTile()" class="squareButton" [disabled]="silentPeakTiles.length <= 0">SILENT PEAK</button>
+        <ion-col col-4 text-center>
+          <button  
+          class="squareButton"
+          (click)="onGetBlackwoodTile()"
+          [disabled]="blackWoodTiles.length <= 0">
+            <img src="assets/img/tile_blackwood.png"/>
+          </button>
         </ion-col>
-        <ion-col col-6 text-center>
-          <button ion-button clear color="snow" (click)="onGetBlackwoodTile()" class="squareButton" [disabled]="blackWoodTiles.length <= 0">BLACKWOOD</button>
+        <ion-col col-4 text-center>
+        <button class="refresh" ion-button icon-only text-center
+        (click)="onResetTiles()">
+          <ion-icon name="md-refresh" color="snow"></ion-icon>
+          </button>
         </ion-col>
+        <ion-col col-4 text-center>
+          <button clear 
+          class="squareButton"
+          (click)="onGetSilentPeakTile()"
+          [disabled]="silentPeakTiles.length <= 0">
+            <img src="assets/img/tile_silentpeak.png"/>
+          </button>
+        </ion-col>        
       </ion-row>
     </ion-grid>
     <ion-grid>
       <ion-row>
-        <ion-col col-6>
-          <ion-item *ngFor="let i of silentPeakDiscardTiles" class="tile" no-lines>{{ i.tile }}</ion-item>
+        <ion-col col-6 text-center>
+          <button clear class="squareButton" *ngFor="let i of blackWoodDiscardTiles">
+            <img src="{{i.image}}"/>
+          </button>
+          <!--<ion-item *ngFor="let i of blackWoodDiscardTiles"  class="tile" no-lines>{{ i.tile }}</ion-item>-->
         </ion-col>
-        <ion-col col-6>
-          <ion-item *ngFor="let i of blackWoodDiscardTiles"  class="tile" no-lines>{{ i.tile }}</ion-item>
+        <ion-col col-6 text-center>
+          <button clear class="squareButton" *ngFor="let i of silentPeakDiscardTiles">
+            <img src="{{i.image}}"/>
+          </button>
+          <!--<ion-item *ngFor="let i of silentPeakDiscardTiles" class="tile" no-lines>{{ i.tile }}</ion-item>-->
         </ion-col>
       </ion-row>
     </ion-grid>
-  <!--</div>-->
+  </div>
 </ion-content>

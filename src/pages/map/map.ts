@@ -79,4 +79,8 @@ export class MapPage implements OnInit{
       // Désactiver le bouton quand la pile est vide
     }
   }
+
+  back(){
+    this.navCtrl.pop();
+  }
 }

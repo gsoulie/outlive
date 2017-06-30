@@ -1,23 +1,25 @@
 import { Config } from './../config';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+//import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class DataProvider {
 
   silentPeak: any[] = [
-    {id:1,tile: "Munition",image: "", extension: false},{id:2,tile: "Placard vide",image: "", extension: false},{id:3,tile: "Algue",image: "", extension: false},
-    {id:4,tile: "Eau",image: "", extension: false},{id:5,tile: "Bois",image: "", extension: false},{id:6,tile: "Munition",image: "", extension: false},
-    {id:7,tile: "Placard vide",image: "", extension: false},{id:8,tile: "Métal",image: "", extension: false},{id:9,tile: "Conserve",image: "", extension: false},
-    {id:10,tile: "Puce électronique",image: "", extension: false}
+    {id:1,tile: "Munition",image: "assets/img/tile_munition.png", extension: false},{id:2,tile: "Placard vide",image: "assets/img/tile_placard.png", extension: false},
+    {id:3,tile: "Algue",image: "assets/img/tile_algue.png", extension: false},{id:4,tile: "Eau",image: "assets/img/tile_eau.png", extension: false},
+    {id:5,tile: "Bois",image: "assets/img/tile_bois.png", extension: false},{id:6,tile: "Munition",image: "assets/img/tile_munition.png", extension: false},
+    {id:7,tile: "Placard vide",image: "assets/img/tile_placard.png", extension: false},{id:8,tile: "Métal",image: "assets/img/tile_metal.png", extension: false},
+    {id:9,tile: "Conserve",image: "assets/img/tile_conserve.png", extension: false},{id:10,tile: "Puce électronique",image: "assets/img/tile_puce.png", extension: false}
   ];
 
   blackWood: any[] = [
-    {id:1,tile: "Munition",image: "", extension: false},{id:2,tile: "Placard vide",image: "", extension: false},{id:3,tile: "Algue",image: "", extension: false},
-    {id:4,tile: "Eau",image: "", extension: false},{id:5,tile: "Bois",image: "", extension: false},{id:6,tile: "Munition",image: "", extension: false},
-    {id:7,tile: "Placard vide",image: "", extension: false},{id:8,tile: "Métal",image: "", extension: false},{id:9,tile: "Conserve",image: "", extension: false},
-    {id:10,tile: "Puce électronique",image: "", extension: false}
+    {id:1,tile: "Munition",image: "assets/img/tile_munition.png", extension: false},{id:2,tile: "Placard vide",image: "assets/img/tile_placard.png", extension: false},
+    {id:3,tile: "Algue",image: "assets/img/tile_algue.png", extension: false},{id:4,tile: "Eau",image: "assets/img/tile_eau.png", extension: false},
+    {id:5,tile: "Bois",image: "assets/img/tile_bois.png", extension: false},{id:6,tile: "Munition",image: "assets/img/tile_munition.png", extension: false},
+    {id:7,tile: "Placard vide",image: "assets/img/tile_placard.png", extension: false},{id:8,tile: "Métal",image: "assets/img/tile_metal.png", extension: false},
+    {id:9,tile: "Conserve",image: "assets/img/tile_conserve.png", extension: false},{id:10,tile: "Puce électronique",image: "assets/img/tile_puce.png", extension: false}
   ];
   silentPeakDiscardTiles: any[] = [];
   blackwoodDiscardTiles: any[] = [];
