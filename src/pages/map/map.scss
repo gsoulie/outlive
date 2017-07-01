@@ -28,15 +28,14 @@ page-map {
         vertical-align: center;
     }
     .squareButton{
-        /*height: 100px;
-        width: 100px;
-        background-color:rgba(0,0,0,0.5); 
-        color: #ffffff;
-        border-color: rgba(255,255,255,0.5);
-        border-color: rgba(0,0,0,1);
-        border-radius: 5px;
-        vertical-align: center;*/
         background-color: transparent;
+        height: 80px;
+        width: 80px;
+        padding: 0px;
+        margin: 2px;
+    }
+    .noPaddingCol{
+        padding: 0px;
     }
     .tile{
         background-color: transparent;
@@ -46,10 +45,5 @@ page-map {
         display: block;
         margin-left: auto;
         margin-right: auto;
-
-        /*background-color:rgba(0,0,0,0.4); 
-        color: #ffffff;
-        min-height: 2rem;   // permet de définir la hauteur minimale d'un ion-item et donc de pouvoir lui fixer une hauteur en px par la suite
-        height: 35px;*/
     }
 }

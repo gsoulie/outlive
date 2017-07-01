@@ -1,9 +1,3 @@
-<!--<ion-header>
-  <ion-navbar>
-    <ion-title>Retour</ion-title>
-  </ion-navbar>
-</ion-header>
--->
 <ion-content class="main"> 
   <div class="overview">
     <button ion-button class="backbutton" (click)="back()"
@@ -11,9 +5,6 @@
       <ion-icon color="snow" name="md-arrow-back"></ion-icon>
       <ion-label color="snow">Retour</ion-label>
     </button>
-   <!-- <div text-center>
-      <button ion-button outline (click)="onResetTiles()" class="outliveButton">JOUR SUIVANT</button>
-    </div>-->
     <ion-grid>
       <ion-row>
         <ion-col col-4 text-center>
@@ -42,17 +33,15 @@
     </ion-grid>
     <ion-grid>
       <ion-row>
-        <ion-col col-6 text-center>
+        <ion-col col-6 text-center class="noPaddingCol">
           <button clear class="squareButton" *ngFor="let i of blackWoodDiscardTiles">
             <img src="{{i.image}}"/>
           </button>
-          <!--<ion-item *ngFor="let i of blackWoodDiscardTiles"  class="tile" no-lines>{{ i.tile }}</ion-item>-->
         </ion-col>
-        <ion-col col-6 text-center>
+        <ion-col col-6 text-center class="noPaddingCol">
           <button clear class="squareButton" *ngFor="let i of silentPeakDiscardTiles">
             <img src="{{i.image}}"/>
           </button>
-          <!--<ion-item *ngFor="let i of silentPeakDiscardTiles" class="tile" no-lines>{{ i.tile }}</ion-item>-->
         </ion-col>
       </ion-row>
     </ion-grid>
