@@ -1,0 +1,164 @@
+<ion-content class="main"> 
+  <div class="overviewWithoutOverlay">
+    <button ion-button class="backbutton" (click)="back()"
+      text-center clear icon-only color="snow">
+      <ion-icon color="snow" name="md-arrow-back"></ion-icon>
+      <ion-label color="snow">Retour</ion-label>
+    </button>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-3 text-center class="playerCell">
+            <button ion-button small icon-only color="player1" class="roundButton"
+            (click)="onPromptPlayerName(1)">
+              <ion-icon color="snow" item-right name="md-person-add"></ion-icon>
+            </button>
+            <ion-label class="playerName">{{ p1Name }}</ion-label>
+          </ion-col>
+          <ion-col col-3 text-center class="playerCell">
+            <button ion-button small icon-only color="player2" class="roundButton"
+            (click)="onPromptPlayerName(2)">
+              <ion-icon color="snow" item-right name="md-person-add"></ion-icon>
+            </button>
+            <ion-label class="playerName">{{ p2Name }}</ion-label>
+          </ion-col>
+          <ion-col col-3 text-center class="playerCell">
+            <button ion-button small icon-only color="player3" class="roundButton"
+            (click)="onPromptPlayerName(3)">
+              <ion-icon color="snow" item-right name="md-person-add"></ion-icon>
+            </button>
+            <ion-label class="playerName">{{ p3Name }}</ion-label>
+          </ion-col>
+          <ion-col col-3 text-center class="playerCell">
+            <button ion-button small icon-only color="player4" class="roundButton"
+            (click)="onPromptPlayerName(4)">
+              <ion-icon color="snow" item-right name="md-person-add"></ion-icon>
+            </button>
+            <ion-label class="playerName">{{ p4Name }}</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-center>
+          <h5>Evénement</h5>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-3>
+            <ion-input class="input" type="number" text-center [(ngModel)]="event_p1" name="event_p1" (change)="onCalculate()"></ion-input>
+          </ion-col>
+          <ion-col col-3>
+            <ion-input class="input" type="number" text-center [(ngModel)]="event_p2" name="event_p2" (change)="onCalculate()"></ion-input>
+          </ion-col>
+          <ion-col col-3>
+            <ion-input class="input" type="number" text-center [(ngModel)]="event_p3" name="event_p3" (change)="onCalculate()"></ion-input>
+          </ion-col>
+          <ion-col col-3>
+            <ion-input class="input" type="number" text-center [(ngModel)]="event_p4" name="event_p4" (change)="onCalculate()"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-center>
+          <h5>Salles</h5>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-3>
+            <ion-input class="input" type="number" text-center [(ngModel)]="room_p1" name="room_p1" (change)="onCalculate()"></ion-input>
+          </ion-col>
+          <ion-col col-3>
+            <ion-input class="input" type="number" text-center [(ngModel)]="room_p2" name="room_p2" (change)="onCalculate()"></ion-input>
+          </ion-col>
+          <ion-col col-3>
+            <ion-input class="input" type="number" text-center [(ngModel)]="room_p3" name="room_p3" (change)="onCalculate()"></ion-input>
+          </ion-col>
+          <ion-col col-3>
+            <ion-input class="input" type="number" text-center [(ngModel)]="room_p4" name="room_p4" (change)="onCalculate()"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-center>
+          <h5>Radioactivité</h5>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-3 class="m">
+            <ion-input class="input" type="number" text-center [(ngModel)]="rad_p1" name="rad_p1" (change)="onCalculate()"></ion-input>
+          </ion-col>
+          <ion-col col-3>
+            <ion-input class="input" type="number" text-center [(ngModel)]="rad_p2" name="rad_p2" (change)="onCalculate()"></ion-input>
+          </ion-col>
+          <ion-col col-3>
+            <ion-input class="input" type="number" text-center [(ngModel)]="rad_p3" name="rad_p3" (change)="onCalculate()"></ion-input>
+          </ion-col>
+          <ion-col col-3>
+            <ion-input class="input" type="number" text-center [(ngModel)]="rad_p4" name="rad_p4" (change)="onCalculate()"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-center>
+          <h5>Survivants</h5>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-3>
+            <ion-input class="input" type="number" text-center [(ngModel)]="survivor_p1" name="survivor_p1" (change)="onCalculate()"></ion-input>
+          </ion-col>
+          <ion-col col-3>
+            <ion-input class="input" type="number" text-center [(ngModel)]="survivor_p2" name="survivor_p2" (change)="onCalculate()"></ion-input>
+          </ion-col>
+          <ion-col col-3>
+            <ion-input class="input" type="number" text-center [(ngModel)]="survivor_p3" name="survivor_p3" (change)="onCalculate()"></ion-input>
+          </ion-col>
+          <ion-col col-3>
+            <ion-input class="input" type="number" text-center [(ngModel)]="survivor_p4" name="survivor_p4" (change)="onCalculate()"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-center>
+            <h5>Equipements</h5>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-3>
+            <ion-input class="input" type="number" text-center [(ngModel)]="stuff_p1" name="stuff_p1" (change)="onCalculate()"></ion-input>
+          </ion-col>
+          <ion-col col-3>
+            <ion-input class="input" type="number" text-center [(ngModel)]="stuff_p2" name="stuff_p2" (change)="onCalculate()"></ion-input>
+          </ion-col>
+          <ion-col col-3>
+            <ion-input class="input" type="number" text-center [(ngModel)]="stuff_p3" name="stuff_p3" (change)="onCalculate()"></ion-input>
+          </ion-col>
+          <ion-col col-3>
+            <ion-input class="input" type="number" text-center [(ngModel)]="stuff_p4" name="stuff_p4" (change)="onCalculate()"></ion-input>
+          </ion-col>
+        </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <h5>TOTAL</h5>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-3>
+        <ion-input *ngIf="p1Winner" class="input" text-center readonly="true" [(ngModel)]="t1" [style.backgroundColor]="'#2980b9'"></ion-input>
+        <ion-input *ngIf="!p1Winner" class="input" text-center readonly="true" [(ngModel)]="t1" [style.backgroundColor]="'rgba(0,0,0,0.5)'"></ion-input>
+      </ion-col>
+      <ion-col col-3>
+        <ion-input *ngIf="p2Winner" class="input" text-center readonly="true" [(ngModel)]="t2" [style.backgroundColor]="'#f1c40f'"></ion-input>
+        <ion-input *ngIf="!p2Winner" class="input" text-center readonly="true" [(ngModel)]="t2" [style.backgroundColor]="'rgba(0,0,0,0.5)'"></ion-input>
+      </ion-col>
+      <ion-col col-3>
+        <ion-input *ngIf="p3Winner" class="input" text-center readonly="true" [(ngModel)]="t3" [style.backgroundColor]="'#9b59b6'"></ion-input>
+        <ion-input *ngIf="!p3Winner" class="input" text-center readonly="true" [(ngModel)]="t3" [style.backgroundColor]="'rgba(0,0,0,0.5)'"></ion-input>
+      </ion-col>
+      <ion-col col-3>
+        <ion-input *ngIf="p4Winner" class="input" text-center readonly="true" [(ngModel)]="t4" [style.backgroundColor]="'#e74c3c'"></ion-input>
+        <ion-input *ngIf="!p4Winner" class="input" text-center readonly="true" [(ngModel)]="t4" [style.backgroundColor]="'rgba(0,0,0,0.5)'"></ion-input>
+      </ion-col>
+    </ion-row>
+      </ion-grid>
+    
+  </div>
+<ion-footer>
+  <ion-grid>
+    </ion-grid>
+</ion-footer>
+</ion-content>

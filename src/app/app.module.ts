@@ -1,3 +1,4 @@
+import { ScoringPage } from './../pages/scoring/scoring';
 import { Config } from './../providers/config';
 import { Http } from '@angular/http';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
@@ -16,7 +17,8 @@ import { DataProvider } from '../providers/data/data';
   declarations: [
     MyApp,
     HomePage,
-    MapPage
+    MapPage,
+    ScoringPage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,8 @@ import { DataProvider } from '../providers/data/data';
   entryComponents: [
     MyApp,
     HomePage,
-    MapPage
+    MapPage,
+    ScoringPage
   ],
   providers: [
     StatusBar,
