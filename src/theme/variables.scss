@@ -39,7 +39,11 @@ $colors: (
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
-  snow: #ffffff
+  snow: #ffffff,
+  player1: #2980b9,
+  player2: #F5DEB3,
+  player3: #9b59b6,
+  player4: #e74c3c,
 );
 
 // App iOS Variables
@@ -52,7 +56,9 @@ $colors: (
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
+$text-input-md-show-focus-highlight: false !default;
+$text-input-md-show-valid-highlight: $text-input-md-show-focus-highlight !default;
+$text-input-md-show-invalid-highlight: $text-input-md-show-focus-highlight !default;
 
 
 

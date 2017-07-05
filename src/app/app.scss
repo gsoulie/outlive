@@ -20,3 +20,25 @@
   border-radius: 5px;
   vertical-align: center;
 }
+.headerLabel{
+  color: #ffffff;
+  font-size: 18px;
+  text-align: center;
+}
+.formContainer{
+  position: absolute;
+  bottom: 20%;
+  left: 50px;
+  right: 50px;
+}
+.overview{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    overflow: auto;
+}
+.overviewWithoutOverlay{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
