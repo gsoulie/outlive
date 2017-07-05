@@ -18,12 +18,11 @@ export class MapPage implements OnInit{
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              private screenOrientation: ScreenOrientation,
+              /*private screenOrientation: ScreenOrientation,*/
               private data: DataProvider) {}
 
   ngOnInit(){
     this.nbSurvivor = this.navParams.get("nbSurvivor") || "4";
-    
     //this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
   }
   ionViewDidLoad() {
@@ -35,11 +34,6 @@ export class MapPage implements OnInit{
     this.blackWoodTiles = this.data.onDiscardSilentPeakTiles(this.nbSurvivor, Config.CITY_BLACKWOOD);
     this.silentPeakDiscardTiles = this.data.getSilentPeakDiscardedTiles();
     this.blackWoodDiscardTiles = this.data.getBlackwoodDiscardedTiles();
-
-    //TODO
-    /*
-    - ne pas afficher les piles, juste les tuiles écartées
-    - */
   }
 
   /**
@@ -51,13 +45,9 @@ export class MapPage implements OnInit{
       let tileIndex = Math.floor(Math.random() * this.silentPeakTiles.length) + 1; // chiffre random entre 1 et 10
       tileIndex--;
     
-      // Afficher la tuile en surbrillance
-
       // ajouter la tuile piochées dans la silentPeakDiscardTile
       this.silentPeakDiscardTiles.push(this.silentPeakTiles[tileIndex]);
       this.silentPeakTiles.splice(tileIndex,1);
-    
-      // Désactiver le bouton quand la pile est vide
     }
   }
 
@@ -69,14 +59,11 @@ export class MapPage implements OnInit{
     if(this.blackWoodTiles.length > 0){
       let tileIndex = Math.floor(Math.random() * this.blackWoodTiles.length) + 1; // chiffre random entre 1 et 10
       tileIndex--;
-    
-      // Afficher la tuile en surbrillance
 
-      // ajouter la tuile piochées dans la silentPeakDiscardTile
+      // ajouter la tuile piochées dans la blackWoodDiscardTiles
       this.blackWoodDiscardTiles.push(this.blackWoodTiles[tileIndex]);
+      //this.blackWoodDiscardTiles.reverse();
       this.blackWoodTiles.splice(tileIndex,1);
-    
-      // Désactiver le bouton quand la pile est vide
     }
   }
 
