@@ -1,15 +1,10 @@
 page-home {
-      ion-content{
+     ion-content{
         background-image: url('../assets/img/gaz.jpg');
         -webkit-background-image: url('../assets/img/gaz.jpg');
         background-repeat: no-repeat;
         background-size:cover;
         background-position: center; 
-    }
-    .headerLabel{
-        color: #ffffff;
-        font-size: 18px;
-        text-align: center;
     }
     ion-item{
         background-color: transparent !important;
@@ -23,10 +18,7 @@ page-home {
         border-color: #ffffff;
         border-width: 2px;
     }
-    .form{
-        position: absolute;
-        bottom: 20%;
-        left: 50px;
-        right: 50px;
+    .fabClear{
+        background-color: rgba(34,34,34,1);        
     }
 }

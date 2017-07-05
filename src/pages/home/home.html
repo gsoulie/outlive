@@ -1,5 +1,10 @@
 <ion-content padding>
-  <div class="form">
+  <ion-fab right top>
+      <button ion-fab icon-only clear class="fabClear" (click)="onOpenScoring()">
+        <ion-icon color="snow" item-right name="md-calculator"></ion-icon>
+      </button>
+  </ion-fab>
+  <div class="formContainer">
   <ion-label class="headerLabel">Nombre de survivants</ion-label>
   <div class="setting">
   <ion-list radio-group [(ngModel)]="nbSurvivor">
