@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="fr.gsoulie.otp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="fr.gsoulie.otp" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Outlive Tile Picker</name>
     <description>Outlive Tile Picker</description>
     <author email="sinx34000@gmail.com" href="">Guillaume SOULIE</author>
@@ -18,13 +18,19 @@
     <preference name="android-minSdkVersion" value="16"/>
     <preference name="BackupWebStorage" value="none"/>
     <preference name="SplashMaintainAspectRatio" value="true"/>
-    <preference name="FadeSplashScreenDuration" value="300"/>
+    <!--<preference name="FadeSplashScreenDuration" value="300"/>-->
     <preference name="SplashShowOnlyFirstTime" value="false"/>
     <preference name="SplashScreen" value="screen"/>
-    <preference name="SplashScreenDelay" value="3000"/>
+    <!--<preference name="SplashScreenDelay" value="3000"/>-->
     <preference name="ShowSplashScreenSpinner" value="false"/>
+    <preference name="loadUrlTimeoutValue" value="60000" />
+
+    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="SplashScreenDelay" value="10000" />
+    <preference name="FadeSplashScreenDuration" value="1000" />
+    <preference name="ShowSplashScreen" value="true" />
+    <preference name="FadeSplashScreen" value="true" />
     <platform name="android">
-        <!--<preference name="loadUrlTimeoutValue" value="700000" />-->
         <allow-intent href="market:*"/>
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png"/>
         <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png"/>
