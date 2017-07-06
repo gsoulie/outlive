@@ -15,6 +15,8 @@ export class MapPage implements OnInit{
   silentPeakDiscardTiles: any[] = [];
   blackWoodDiscardTiles: any[] = [];
   nbSurvivor = "4";
+  initTileBlackwood: boolean = true;  // indique si c'est le premier chargement (on n'affiche pas le liseret jaune)
+  initTileSilentPeak: boolean = true;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -34,6 +36,8 @@ export class MapPage implements OnInit{
     this.blackWoodTiles = this.data.onDiscardSilentPeakTiles(this.nbSurvivor, Config.CITY_BLACKWOOD);
     this.silentPeakDiscardTiles = this.data.getSilentPeakDiscardedTiles();
     this.blackWoodDiscardTiles = this.data.getBlackwoodDiscardedTiles();
+    this.initTileBlackwood = true;
+    this.initTileSilentPeak = true;
   }
 
   /**
@@ -42,6 +46,7 @@ export class MapPage implements OnInit{
   onGetSilentPeakTile(){
     // Choisir la tuile en faisant un random sur le nombre de tuiles de la pile 
     if(this.silentPeakTiles.length > 0){
+      this.initTileSilentPeak = false;
       let tileIndex = Math.floor(Math.random() * this.silentPeakTiles.length) + 1; // chiffre random entre 1 et 10
       tileIndex--;
     
@@ -57,6 +62,7 @@ export class MapPage implements OnInit{
   onGetBlackwoodTile(){
     // Choisir la tuile en faisant un random sur le nombre de tuiles de la pile 
     if(this.blackWoodTiles.length > 0){
+      this.initTileBlackwood = false;
       let tileIndex = Math.floor(Math.random() * this.blackWoodTiles.length) + 1; // chiffre random entre 1 et 10
       tileIndex--;
 

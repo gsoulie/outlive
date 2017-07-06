@@ -85,8 +85,8 @@ export class DataProvider {
 
     switch(nbPlayer){
       case "1":
-        // on retire 6 tuiles
-        removedTiles = this.fillRemovedTileArray(6);
+        // on retire 4 tuiles
+        removedTiles = this.fillRemovedTileArray(4);
         break;
       case "2":
         // on retire 4 tuiles

@@ -16,6 +16,12 @@
           </button>
         </ion-col>
         <ion-col col-4 text-center>
+           <!--<ion-fab center>
+              <button ion-fab icon-only clear class="fabClear" (click)="onResetTiles()">
+                <ion-icon color="snow" item-right name="md-refresh"></ion-icon>
+              </button>
+          </ion-fab>
+ -->
         <button class="refresh" ion-button icon-only text-center
         (click)="onResetTiles()">
           <ion-icon name="md-refresh" color="snow"></ion-icon>
@@ -36,14 +42,14 @@
       <ion-row>
         <ion-col col-6 text-center class="noPaddingCol">
           <button clear class="squareButton" *ngFor="let i of blackWoodDiscardTiles; let idx = index">
-            <img src="{{i.image}}" *ngIf="idx == blackWoodDiscardTiles.length-1" [style.border]="'2px solid #ffcc00'"/>
-            <img src="{{i.image}}" *ngIf="idx !== blackWoodDiscardTiles.length-1" [style.border]="'1px solid #000000'"/>
+            <img src="{{i.image}}" *ngIf="idx == blackWoodDiscardTiles.length-1 && initTileBlackwood == false" [style.border]="'2px solid #ffcc00'"/>
+            <img src="{{i.image}}" *ngIf="idx !== blackWoodDiscardTiles.length-1 || initTileBlackwood == true" [style.border]="'1px solid #000000'"/>
           </button>
         </ion-col>
         <ion-col col-6 text-center class="noPaddingCol">
           <button clear class="squareButton" *ngFor="let i of silentPeakDiscardTiles; let idx = index">
-            <img src="{{i.image}}" *ngIf="idx == silentPeakDiscardTiles.length-1" [style.border]="'2px solid #ffcc00'"/>
-            <img src="{{i.image}}" *ngIf="idx !== silentPeakDiscardTiles.length-1" [style.border]="'1px solid #000000'"/>
+            <img src="{{i.image}}" *ngIf="idx == silentPeakDiscardTiles.length-1 && initTileSilentPeak == false" [style.border]="'2px solid #ffcc00'"/>
+            <img src="{{i.image}}" *ngIf="idx !== silentPeakDiscardTiles.length-1 || initTileSilentPeak == true" [style.border]="'1px solid #000000'"/>
           </button>
         </ion-col>
       </ion-row>
