@@ -9,12 +9,7 @@
   <div class="setting">
   <ion-list radio-group [(ngModel)]="nbSurvivor">
     <ion-item no-lines>
-      <ion-label>1 joueur</ion-label>
-      <ion-radio checked="false" color="snow" value="1"></ion-radio>
-    </ion-item>
-
-    <ion-item no-lines>
-      <ion-label>2 joueurs</ion-label>
+      <ion-label>1 ou 2 joueurs</ion-label>
       <ion-radio checked="false" color="snow" value="2"></ion-radio>
     </ion-item>
 
@@ -26,6 +21,11 @@
     <ion-item no-lines>
       <ion-label>4 joueurs</ion-label>
       <ion-radio checked="true" color="snow" value="4"></ion-radio>
+    </ion-item>
+
+    <ion-item no-lines>
+      <ion-label>Ajouter les tuiles extension</ion-label>
+      <ion-toggle [(ngModel)]="extension" checked="false" color="dark"></ion-toggle>
     </ion-item>
   </ion-list>
   </div>

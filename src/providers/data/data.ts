@@ -24,6 +24,10 @@ export class DataProvider {
   silentPeakDiscardTiles: any[] = [];
   blackwoodDiscardTiles: any[] = [];
 
+  refugieTile = {id:11,tile: "Réfugié",image: "assets/img/tile_refugie.png", extension: true};
+  pillardTile = {id:11,tile: "Pillard",image: "assets/img/tile_pillard.png", extension: true};
+  marchandTile = {id:11,tile: "Marchand",image: "assets/img/tile_marchand.png", extension: true};
+
   constructor() {}
 
   arraySearch(_searchID, _myArray, _rubID){
@@ -43,22 +47,29 @@ export class DataProvider {
    * Supprimer de chaque ville
    * @param nbPlayer 
    */
-  onDiscardSilentPeakTiles(nbPlayer = "4", city: number){
+  onDiscardCityTiles(nbPlayer = "4", city: number, extension: boolean = false){
     let tileStack: any[] = [];
     
+    // Créer une pile temporaire contenant toutes les tuiles
     if(city == Config.CITY_SILENTPEAK){
+      this.silentPeakDiscardTiles = [];
       for(var j = 0; j < this.silentPeak.length; j++){
-        this.silentPeakDiscardTiles = [];
         tileStack.push(this.silentPeak[j]);
       }
     } else {
+      this.blackwoodDiscardTiles = [];
       for(var j = 0; j < this.blackWood.length; j++){
-        this.blackwoodDiscardTiles = [];
         tileStack.push(this.blackWood[j]);
       }
     }    
+
+    // Extension activée ?
+    if(extension == true){
+      // Oui, on rajoute la tuile extension dans la liste initiale
+      tileStack.push(this.onGetRandomExtensionTile());
+    }  
     
-    var removedTiles = this.onDiscardRandomTile(nbPlayer);
+    var removedTiles = this.onDiscardRandomTile(nbPlayer, extension);
     console.log("onDiscardSilentPeakTiles removed " + JSON.stringify(removedTiles));
 
     for(let i = 0; i < removedTiles.length; i++){
@@ -79,22 +90,23 @@ export class DataProvider {
   /**
    * Supprimer un nombre de tuiles définis selon le nombre de joueurs
    * @param nbPlayer 
+   * @param extension : indique si on inclut les tuiles extension
    */
-  onDiscardRandomTile(nbPlayer = "4"){
+  onDiscardRandomTile(nbPlayer = "4", extension: boolean = false){
     let removedTiles = [];
 
     switch(nbPlayer){
       case "1":
         // on retire 4 tuiles
-        removedTiles = this.fillRemovedTileArray(4);
+        removedTiles = this.fillRemovedTileArray(4,extension);
         break;
       case "2":
         // on retire 4 tuiles
-        removedTiles = this.fillRemovedTileArray(4);
+        removedTiles = this.fillRemovedTileArray(4,extension);
         break;
       case "3":
         // on retire 2 tuiles
-        removedTiles = this.fillRemovedTileArray(2);
+        removedTiles = this.fillRemovedTileArray(2,extension);
         break;
     }
 
@@ -104,17 +116,37 @@ export class DataProvider {
   /**
    * Retourne un tableau contenant les index des tuiles à supprimer 
    * @param nbTileToDiscard : nombre de tuiles à supprimer selon le nombre de joueurs
+   * @param extension : indique si on inclut les tuiles extension
    */
-  fillRemovedTileArray(nbTileToDiscard: number = 0){
-    let removedTiles = [];
+  fillRemovedTileArray(nbTileToDiscard: number = 0,extension: boolean = false){
+    let removedTiles = [], nbTuile = extension == true ? 11 : 10;
 
     while(removedTiles.length < nbTileToDiscard){
-      let tileIndex = Math.floor(Math.random() * 10) + 1; // chiffre random entre 1 et 10
+      let tileIndex = Math.floor(Math.random() * nbTuile) + 1; // chiffre random entre 1 et 10 (ou 11 si extension)
       if(removedTiles.indexOf(tileIndex) < 0){
         removedTiles.push(tileIndex);
       }
     }
     return removedTiles;
+  }
+
+  /**
+  * Piocher une tuile extension au hasard parmis les 3 proposées
+  * @return : tuile
+  */
+  onGetRandomExtensionTile(){
+    // Piocher une tuile au hasard parmis les 3 tuiles extensions
+    let randomIndex = Math.floor(Math.random() * 3) + 1;
+    switch(randomIndex){
+        case 1:
+            return this.refugieTile;
+        case 2:
+            return this.pillardTile;
+        case 3:
+            return this.marchandTile;
+        default:
+            return {};
+    }
   }
 
 }

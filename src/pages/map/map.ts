@@ -2,7 +2,6 @@ import { Config } from './../../providers/config';
 import { DataProvider } from './../../providers/data/data';
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @Component({
   selector: 'page-map',
@@ -17,6 +16,7 @@ export class MapPage implements OnInit{
   nbSurvivor = "4";
   initTileBlackwood: boolean = true;  // indique si c'est le premier chargement (on n'affiche pas le liseret jaune)
   initTileSilentPeak: boolean = true;
+  extension: boolean = false;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -25,6 +25,7 @@ export class MapPage implements OnInit{
 
   ngOnInit(){
     this.nbSurvivor = this.navParams.get("nbSurvivor") || "4";
+    this.extension = this.navParams.get("extension") || false;
     //this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
   }
   ionViewDidLoad() {
@@ -32,8 +33,8 @@ export class MapPage implements OnInit{
     console.log('ionViewDidLoad MapPage');
   }
   onResetTiles(){
-    this.silentPeakTiles = this.data.onDiscardSilentPeakTiles(this.nbSurvivor, Config.CITY_SILENTPEAK);
-    this.blackWoodTiles = this.data.onDiscardSilentPeakTiles(this.nbSurvivor, Config.CITY_BLACKWOOD);
+    this.silentPeakTiles = this.data.onDiscardCityTiles(this.nbSurvivor, Config.CITY_SILENTPEAK,this.extension);
+    this.blackWoodTiles = this.data.onDiscardCityTiles(this.nbSurvivor, Config.CITY_BLACKWOOD,this.extension);
     this.silentPeakDiscardTiles = this.data.getSilentPeakDiscardedTiles();
     this.blackWoodDiscardTiles = this.data.getBlackwoodDiscardedTiles();
     this.initTileBlackwood = true;

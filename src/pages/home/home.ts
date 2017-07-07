@@ -10,11 +10,12 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
   nbSurvivor: string = "4";
   players: any = {};
+  extension: boolean = false;
 
   constructor(public navCtrl: NavController) {
   }
   onOpenMap(){
-    this.navCtrl.push(MapPage,{nbSurvivor: this.nbSurvivor});
+    this.navCtrl.push(MapPage,{nbSurvivor: this.nbSurvivor,extension: this.extension});
   }
   onOpenScoring(){
     this.navCtrl.push(ScoringPage);
