@@ -9,19 +9,14 @@
       <ion-row>
         <ion-col col-4 text-center>
           <button  
-          class="squareButton"
+          class="squareButtonCity"
           (click)="onGetBlackwoodTile()"
           [disabled]="blackWoodTiles.length <= 0">
-            <img src="assets/img/tile_blackwood.png"/>
+            <img class="tile" src="assets/img/tile_blackwood.png"/>
           </button>
         </ion-col>
         <ion-col col-4 text-center>
-           <!--<ion-fab center>
-              <button ion-fab icon-only clear class="fabClear" (click)="onResetTiles()">
-                <ion-icon color="snow" item-right name="md-refresh"></ion-icon>
-              </button>
-          </ion-fab>
- -->
+      
         <button class="refresh" ion-button icon-only text-center
         (click)="onResetTiles()">
           <ion-icon name="md-refresh" color="snow"></ion-icon>
@@ -29,10 +24,10 @@
         </ion-col>
         <ion-col col-4 text-center>
           <button clear 
-          class="squareButton"
+          class="squareButtonCity"
           (click)="onGetSilentPeakTile()"
           [disabled]="silentPeakTiles.length <= 0">
-            <img src="assets/img/tile_silentpeak.png"/>
+            <img class="tile" src="assets/img/tile_silentpeak.png"/>
           </button>
         </ion-col>        
       </ion-row>
