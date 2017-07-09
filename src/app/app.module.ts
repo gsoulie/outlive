@@ -1,3 +1,4 @@
+import { HordePage } from './../pages/horde/horde';
 import { ScoringPage } from './../pages/scoring/scoring';
 import { Config } from './../providers/config';
 import { Http } from '@angular/http';
@@ -18,7 +19,8 @@ import { DataProvider } from '../providers/data/data';
     MyApp,
     HomePage,
     MapPage,
-    ScoringPage
+    ScoringPage,
+    HordePage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { DataProvider } from '../providers/data/data';
     MyApp,
     HomePage,
     MapPage,
-    ScoringPage
+    ScoringPage,
+    HordePage
   ],
   providers: [
     StatusBar,

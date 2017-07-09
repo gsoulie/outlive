@@ -27,7 +27,8 @@
 }
 .formContainer{
   position: absolute;
-  bottom: 20%;
+  //bottom: 20%;
+  top: 33%;
   left: 50px;
   right: 50px;
 }
@@ -45,4 +46,37 @@
 .backbutton{
     background-color: transparent;
     height: 45px;
+}
+.refresh{
+    background-color: rgba(0,0,0,0.4);
+    height: 60px;
+    width: 60px;
+    vertical-align: center;
+    border-radius: 40px;
+}
+/* TILES */
+img{
+    border-radius: 5px;
+    border: 1px solid #222;
+}
+.squareButton{
+    background-color: transparent;
+    height: 60px;
+    width: 60px;
+    padding: 0px;
+    margin: 2px;
+}
+.tile{
+    border-radius: 5px;
+    border: 1px solid #000000;
+}
+.noPaddingCol{
+    padding: 0px;
+}
+.squareButtonCity{
+    background-color: transparent;
+    height: 70px;
+    width: 70px;
+    padding: 0px;
+    margin: 1px;
 }
