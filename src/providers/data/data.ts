@@ -28,6 +28,13 @@ export class DataProvider {
   pillardTile = {id:11,tile: "Pillard",image: "assets/img/tile_pillard.png", extension: true};
   marchandTile = {id:11,tile: "Marchand",image: "assets/img/tile_marchand.png", extension: true};
 
+  hordeCards: any[] = [
+    {id:1, image: "assets/img/horde-1.png"},{id:2, image: "assets/img/horde-2.png"},
+    {id:3, image: "assets/img/horde-3.png"},{id:4, image: "assets/img/horde-4.png"},
+    {id:5, image: "assets/img/horde-5.png"},{id:6, image: "assets/img/horde-6.png"},
+    {id:7, image: "assets/img/horde-7.png"},{id:8, image: "assets/img/horde-8.png"},
+  ];
+
   constructor() {}
 
   arraySearch(_searchID, _myArray, _rubID){
@@ -147,6 +154,10 @@ export class DataProvider {
         default:
             return {};
     }
+  }
+
+  getHordeCards(){
+    return this.hordeCards.slice();
   }
 
 }
