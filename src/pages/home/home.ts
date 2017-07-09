@@ -1,3 +1,4 @@
+import { HordePage } from './../horde/horde';
 import { ScoringPage } from './../scoring/scoring';
 import { MapPage } from './../map/map';
 import { Component } from '@angular/core';
@@ -14,10 +15,31 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {
   }
+  onStart(){
+    console.log("start " + this.nbSurvivor);
+    
+    switch(this.nbSurvivor){
+      case "1": 
+        this.onOpenHorde();
+        break
+      case "2" :
+      case "3" :
+      case "4" :
+        this.onOpenMap();
+        break
+      default :
+        this.onOpenMap();
+        break
+    }
+
+  }
   onOpenMap(){
     this.navCtrl.push(MapPage,{nbSurvivor: this.nbSurvivor,extension: this.extension});
   }
   onOpenScoring(){
     this.navCtrl.push(ScoringPage);
+  }
+  onOpenHorde(){
+    this.navCtrl.push(HordePage,{nbSurvivor: this.nbSurvivor,extension: this.extension});
   }
 }

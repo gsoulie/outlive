@@ -13,12 +13,15 @@ page-home {
     }
     .setting{
         background-color: rgba(0,0,0,0.3);
-        //opacity: 0.2;
         border-radius: 10px;
         border-color: #ffffff;
         border-width: 2px;
     }
-    .fabClear{
-        background-color: rgba(34,34,34,1);        
+    .formContainer2{
+        left: 50px;
+        right: 50px;
+    }
+    .buttonContainer{
+       margin-top: 20px;
     }
 }

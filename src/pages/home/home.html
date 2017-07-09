@@ -1,36 +1,48 @@
 <ion-content padding>
   <ion-fab right top>
-      <button ion-fab icon-only clear class="fabClear" (click)="onOpenScoring()">
+      <button ion-fab icon-only color="dark" (click)="onOpenScoring()">
         <ion-icon color="snow" item-right name="md-calculator"></ion-icon>
       </button>
   </ion-fab>
+
   <div class="formContainer">
-  <ion-label class="headerLabel">Nombre de survivants</ion-label>
-  <div class="setting">
-  <ion-list radio-group [(ngModel)]="nbSurvivor">
-    <ion-item no-lines>
-      <ion-label>1 ou 2 joueurs</ion-label>
-      <ion-radio checked="false" color="snow" value="2"></ion-radio>
-    </ion-item>
+    <ion-label class="headerLabel">Nombre de survivants</ion-label>
+    <div class="setting">
+      <ion-list radio-group [(ngModel)]="nbSurvivor">
+        <ion-item no-lines>
+          <ion-label>1 joueur</ion-label>
+          <ion-radio checked="false" color="snow" value="1"></ion-radio>
+        </ion-item>
 
-    <ion-item no-lines>
-      <ion-label>3 joueurs</ion-label>
-      <ion-radio checked="false" value="3"color="snow"></ion-radio>
-    </ion-item>
+        <ion-item no-lines>
+          <ion-label>2 joueurs</ion-label>
+          <ion-radio checked="false" color="snow" value="2"></ion-radio>
+        </ion-item>
 
-    <ion-item no-lines>
-      <ion-label>4 joueurs</ion-label>
-      <ion-radio checked="true" color="snow" value="4"></ion-radio>
-    </ion-item>
+        <ion-item no-lines>
+          <ion-label>3 joueurs</ion-label>
+          <ion-radio checked="false" value="3"color="snow"></ion-radio>
+        </ion-item>
 
-    <ion-item no-lines>
-      <ion-label>Ajouter les tuiles extension</ion-label>
-      <ion-toggle [(ngModel)]="extension" checked="false" color="dark"></ion-toggle>
-    </ion-item>
-  </ion-list>
+        <ion-item no-lines>
+          <ion-label>4 joueurs</ion-label>
+          <ion-radio checked="true" color="snow" value="4"></ion-radio>
+        </ion-item>
+
+      </ion-list>
+    </div>
+    <div class="formContainer2">
+      <ion-label class="headerLabel">Perdu dans la ville !</ion-label>
+      <div class="setting">
+        <ion-item no-lines>
+          <ion-label small>Tuiles extension</ion-label>
+          <ion-toggle [(ngModel)]="extension" checked="false" color="dark"></ion-toggle>
+        </ion-item>
+      </div>
+    </div>
+    <div text-center class="buttonContainer">
+      <button ion-button outline (click)="onStart()" class="outliveButton">A VOS ABRIS !</button>
+    </div>
   </div>
-  <div text-center>
-    <button ion-button outline (click)="onOpenMap()" class="outliveButton">A VOS ABRIS !</button>
-  </div>
-  </div>
+  
 </ion-content>
