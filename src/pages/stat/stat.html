@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>    
+    <ion-title>Historique scores</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="onDelete()">
+        <ion-icon name="md-trash"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content class="main2"> 
+  <div class="overviewWithoutOverlay">
+    <ion-list *ngFor="let i of scoreTab">
+      <button ion-item no-lines class="scoreItemHead" text-center>
+        <ion-label class="name" color="player1" *ngIf="i.p1.total > 0">{{ i.p1.name }}</ion-label>
+        <ion-label class="name" color="player2" *ngIf="i.p2.total > 0">{{ i.p2.name }}</ion-label>
+        <ion-label class="name" color="player3" *ngIf="i.p3.total > 0">{{ i.p3.name }}</ion-label>
+        <ion-label class="name" color="player4" *ngIf="i.p4.total > 0">{{ i.p4.name }}</ion-label>
+      </button>
+      <button ion-item no-lines class="scoreItem" text-center>
+        <ion-label class="score" color="snow" *ngIf="i.p1.total > 0">{{ i.p1.total }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.p2.total > 0">{{ i.p2.total }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.p3.total > 0">{{ i.p3.total }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.p4.total > 0">{{ i.p4.total }}</ion-label>
+      </button>
+    </ion-list>
+  </div>
+</ion-content>

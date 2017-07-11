@@ -1,7 +1,9 @@
+import { Score } from './../score';
 import { Config } from './../config';
 import { Injectable } from '@angular/core';
 //import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class DataProvider {
@@ -35,7 +37,9 @@ export class DataProvider {
     {id:7, image: "assets/img/horde-7.png"},{id:8, image: "assets/img/horde-8.png"},
   ];
 
-  constructor() {}
+  private scoreHistory: Score[] = [];
+
+  constructor(private storage: Storage) {}
 
   arraySearch(_searchID, _myArray, _rubID){
     if(!_rubID) {_rubID = "id"; } //default search on "id" member
@@ -65,8 +69,8 @@ export class DataProvider {
       }
     } else {
       this.blackwoodDiscardTiles = [];
-      for(var j = 0; j < this.blackWood.length; j++){
-        tileStack.push(this.blackWood[j]);
+      for(var k = 0; k < this.blackWood.length; k++){
+        tileStack.push(this.blackWood[k]);
       }
     }    
 
@@ -160,4 +164,46 @@ export class DataProvider {
     return this.hordeCards.slice();
   }
 
+  /**
+   * Enregistrer un score en base
+   * @param newEntry
+   */
+  onAddScore(newEntry: Score){
+    this.scoreHistory.push(newEntry);
+    this.storage.set('score', this.scoreHistory)
+    .then()
+    .catch(err => {
+      this.scoreHistory.splice(this.scoreHistory.indexOf(newEntry, 1))
+    });
+  }
+
+  /**
+   * Récupération de l'historique des scores
+   */
+  onfetchScore(){
+    return this.storage.get('score')
+    .then(
+      (s: Score[]) => {
+        this.scoreHistory = s !== null ? s : [];
+        return this.scoreHistory;
+      }
+    )
+    .catch(err => console.log(err))
+  }
+
+  /**
+   * Suppression de la base des scores
+   */
+  onDeleteScore(){
+    this.scoreHistory = [];
+    this.storage.set("score", this.scoreHistory)
+    .then(
+      () => {
+        // doing some stuff
+      }
+    )
+    .catch(
+      err => console.log(err)
+    );
+  }
 }

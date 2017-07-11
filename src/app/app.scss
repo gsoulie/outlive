@@ -14,11 +14,26 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+ion-navbar{
+    background-color: rgba(0,0,0,0.3)
+}
 .outliveButton{  
   color: #ffffff;
   border-color: rgba(255,255,255,0.5);
   border-radius: 5px;
   vertical-align: center;
+}
+.main {
+    background-image: url('../assets/img/outlive_background.jpg');//outlive-background2.jpg
+    -webkit-background-image: url('../assets/img/outlive_background.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.main2 {
+    background-image: url('../assets/img/outlive_cover.jpg');//outlive-background2.jpg
+    -webkit-background-image: url('../assets/img/outlive_cover.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
 }
 .headerLabel{
   color: #ffffff;

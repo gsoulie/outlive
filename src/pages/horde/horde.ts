@@ -11,10 +11,7 @@ export class HordePage implements OnInit{
   hordeCards: any[] = [];
   hordeDiscardCards: any[] = [];
   currentCard: any = {};
-
-
-
-
+  show: boolean = false;
 
 
   //----
@@ -26,6 +23,8 @@ export class HordePage implements OnInit{
   initTileBlackwood: boolean = true;  // indique si c'est le premier chargement (on n'affiche pas le liseret jaune)
   initTileSilentPeak: boolean = true;
   extension: boolean = false;
+  currentBlackwoodTile: any = {};
+  currentSilentpeakTile: any = {};
   //---
   
   constructor(public navCtrl: NavController, 
@@ -37,6 +36,10 @@ export class HordePage implements OnInit{
     this.extension = this.navParams.get("extension") || false;
   }
   
+  showCardDetail(){
+    this.show = !this.show;
+  }
+  
   //---
   onResetTiles(){
     this.silentPeakTiles = this.data.onDiscardCityTiles(this.nbSurvivor, Config.CITY_SILENTPEAK,this.extension);
@@ -45,7 +48,8 @@ export class HordePage implements OnInit{
     this.blackWoodDiscardTiles = this.data.getBlackwoodDiscardedTiles();
     this.initTileBlackwood = true;
     this.initTileSilentPeak = true;
-    
+    this.currentBlackwoodTile = {};
+    this.currentSilentpeakTile = {};
   }
   /**
    * Piocher une tuile dans silent peak
@@ -59,6 +63,7 @@ export class HordePage implements OnInit{
     
       // ajouter la tuile piochées dans la silentPeakDiscardTile
       this.silentPeakDiscardTiles.push(this.silentPeakTiles[tileIndex]);
+      this.currentSilentpeakTile = this.silentPeakTiles[tileIndex];
       this.silentPeakTiles.splice(tileIndex,1);
     }
   }
@@ -75,7 +80,7 @@ export class HordePage implements OnInit{
 
       // ajouter la tuile piochées dans la blackWoodDiscardTiles
       this.blackWoodDiscardTiles.push(this.blackWoodTiles[tileIndex]);
-      //this.blackWoodDiscardTiles.reverse();
+      this.currentBlackwoodTile = this.blackWoodTiles[tileIndex];
       this.blackWoodTiles.splice(tileIndex,1);
     }
   }
@@ -106,9 +111,5 @@ export class HordePage implements OnInit{
       this.currentCard = this.hordeCards[cardIndex];
       this.hordeCards.splice(cardIndex,1);
     }
-  }
-
-  back(){
-    this.navCtrl.pop();
   }
 }

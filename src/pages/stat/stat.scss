@@ -1,0 +1,29 @@
+page-stat {
+    ion-navbar{
+        background-color: transparent;
+    }
+    ion-list{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .scoreItemHead{
+        background-color: rgba(0,0,0,0.6);
+        min-height: 10px;
+        height: 30px;
+        font-size: 14px;
+    }
+    .scoreItem{
+        background-color: rgba(0,0,0,0.4);
+        min-height: 10px;
+        height: 30px;
+    }
+    .name{
+        padding: 0px;
+        margin: auto;
+    }
+    .score{
+        padding: 0px;
+        margin: auto;
+        font-size: 14px;
+    }
+}

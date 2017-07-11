@@ -1,13 +1,22 @@
+<ion-header>
+  <ion-navbar>    
+    <ion-title>Fouille</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="onResetTiles()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
 <ion-content class="main"> 
   <div class="overview">
-    <button ion-button class="backbutton" (click)="back()"
-    text-center clear icon-only color="snow">
-      <ion-icon color="snow" name="md-arrow-back"></ion-icon>
-      <ion-label color="snow">Retour</ion-label>
-    </button>
+    
+    <!-- CITY TILES + CURRENT TILE //////////////////////////////////-->          
     <ion-grid>
       <ion-row>
-        <ion-col col-4 text-center>
+        <!-- BLACKWOOD CITY //////////////////////////////////-->          
+        <ion-col col-3 text-center class="noPaddingCol">
           <button  
           class="squareButtonCity"
           (click)="onGetBlackwoodTile()"
@@ -15,36 +24,47 @@
             <img class="tile" src="assets/img/tile_blackwood.png"/>
           </button>
         </ion-col>
-        <ion-col col-4 text-center>
-      
-        <button class="refresh" ion-button icon-only text-center
-        (click)="onResetTiles()">
-          <ion-icon name="md-refresh" color="snow"></ion-icon>
+
+        <!-- CURRENT BLACKWOOD TILE //////////////////////////////////-->          
+        <ion-col col-3 text-center class="noPaddingCol">
+          <button clear class="squareButton">
+            <img src="{{currentBlackwoodTile.image}}" [style.border]="'2px solid #ffcc00'"/>
           </button>
         </ion-col>
-        <ion-col col-4 text-center>
+
+        <!-- CURRENT SILENTPEAK TILE //////////////////////////////////-->          
+        <ion-col col-3 text-center class="noPaddingCol">
+          <button clear class="squareButton">
+            <img src="{{currentSilentpeakTile.image}}" [style.border]="'2px solid #ffcc00'"/>
+          </button>
+        </ion-col>
+
+        <!-- SILENT PEAK CITY //////////////////////////////////-->          
+        <ion-col col-3 text-center class="noPaddingCol">
           <button clear 
-          class="squareButtonCity"
-          (click)="onGetSilentPeakTile()"
-          [disabled]="silentPeakTiles.length <= 0">
+            class="squareButtonCity"
+            (click)="onGetSilentPeakTile()"
+            [disabled]="silentPeakTiles.length <= 0">
             <img class="tile" src="assets/img/tile_silentpeak.png"/>
           </button>
         </ion-col>        
       </ion-row>
     </ion-grid>
 
+    <!-- PICKED TILES //////////////////////////////////-->          
     <ion-grid>
       <ion-row>
         <ion-col col-6 text-center class="noPaddingCol">
           <button clear class="squareButton" *ngFor="let i of blackWoodDiscardTiles; let idx = index">
-            <img src="{{i.image}}" *ngIf="idx == blackWoodDiscardTiles.length-1 && initTileBlackwood == false" [style.border]="'2px solid #ffcc00'"/>
-            <img src="{{i.image}}" *ngIf="idx !== blackWoodDiscardTiles.length-1 || initTileBlackwood == true" [style.border]="'1px solid #000000'"/>
+            <img src="{{i.image}}" *ngIf="idx == blackWoodDiscardTiles.length-1 && initTileBlackwood == false && i !== currentBlackwoodTile" [style.border]="'2px solid #ffcc00'"/>
+            <img src="{{i.image}}" *ngIf="idx !== blackWoodDiscardTiles.length-1 || initTileBlackwood == true && i !== currentBlackwoodTile" [style.border]="'1px solid #000000'"/>
           </button>
         </ion-col>
+
         <ion-col col-6 text-center class="noPaddingCol">
           <button clear class="squareButton" *ngFor="let i of silentPeakDiscardTiles; let idx = index">
-            <img src="{{i.image}}" *ngIf="idx == silentPeakDiscardTiles.length-1 && initTileSilentPeak == false" [style.border]="'2px solid #ffcc00'"/>
-            <img src="{{i.image}}" *ngIf="idx !== silentPeakDiscardTiles.length-1 || initTileSilentPeak == true" [style.border]="'1px solid #000000'"/>
+            <img src="{{i.image}}" *ngIf="idx == silentPeakDiscardTiles.length-1 && initTileSilentPeak == false && i !== currentSilentpeakTile" [style.border]="'2px solid #ffcc00'"/>
+            <img src="{{i.image}}" *ngIf="idx !== silentPeakDiscardTiles.length-1 || initTileSilentPeak == true && i !== currentSilentpeakTile" [style.border]="'1px solid #000000'"/>
           </button>
         </ion-col>
       </ion-row>

@@ -1,3 +1,7 @@
+import { UiProvider } from './../../providers/ui/ui';
+import { StatPage } from './../stat/stat';
+import { Score } from './../../providers/score';
+import { DataProvider } from './../../providers/data/data';
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController  } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
@@ -40,15 +44,107 @@ export class ScoringPage {
   p3Winner: boolean = false;
   p4Winner: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  scoreTab: Score[] = [];
+
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              public alertCtrl: AlertController, 
+              public db: DataProvider,
+              private ui: UiProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ScoringPage');
   }
-  back(){
-    this.navCtrl.pop();
+ 
+  onSave(){
+    //TODO: Ajouter contrôles de saisie
+    if(this.onSaisieOk() == true){
+      let entry = new Score(new Date().toString(),{
+        name: this.p1Name,
+        event: this.event_p1,
+        room: this.room_p1,
+        rad: this.rad_p1,
+        survivor: this.survivor_p1,
+        stuff: this.stuff_p1,
+        total: this.t1,
+        win: this.p1Winner
+      },{
+        name: this.p2Name,
+        event: this.event_p2,
+        room: this.room_p2,
+        rad: this.rad_p2,
+        survivor: this.survivor_p2,
+        stuff: this.stuff_p2,
+        total: this.t2,
+        win: this.p2Winner
+      },{
+        name: this.p3Name,
+        event: this.event_p3,
+        room: this.room_p3,
+        rad: this.rad_p3,
+        survivor: this.survivor_p3,
+        stuff: this.stuff_p3,
+        total: this.t3,
+        win: this.p3Winner
+      },{
+        name: this.p4Name,
+        event: this.event_p4,
+        room: this.room_p4,
+        rad: this.rad_p4,
+        survivor: this.survivor_p4,
+        stuff: this.stuff_p4,
+        total: this.t4,
+        win: this.p4Winner
+      });
+      this.db.onAddScore(entry);
+      this.ui.onDisplayToast("Partie enregistrée");
+
+      //TODO : vider tous les champs
+      this.onResetField();
+    }
   }
+
+  onSaisieOk(){
+    
+    if((this.t1 == 0 || this.t1 == null) && (this.t2 == 0 || this.t2 == null) && (this.t3 == 0 || this.t3 == null) && (this.t4 == 0 || this.t4 == null)){
+      this.ui.onDisplayToast("Aucun score à enregistrer !");
+      return false;
+    }
+    return true;
+  }
+
+  onResetField(){
+    this.event_p1 = null;
+    this.event_p2 = null;
+    this.event_p3 = null;
+    this.event_p4 = null;
+    this.room_p1 = null;
+    this.room_p2 = null;
+    this.room_p3 = null;
+    this.room_p4 = null;
+    this.rad_p1 = null;
+    this.rad_p2 = null;
+    this.rad_p3 = null;
+    this.rad_p4 = null;
+    this.survivor_p1 = null;
+    this.survivor_p2 = null;
+    this.survivor_p3 = null;
+    this.survivor_p4 = null;
+    this.stuff_p1 = null;
+    this.stuff_p2 = null;
+    this.stuff_p3 = null;
+    this.stuff_p4 = null;
+    this.t1 = null;
+    this.t2 = null;
+    this.t3 = null;
+    this.t4 = null;
+    this.p1Winner = false;
+    this.p2Winner = false;
+    this.p3Winner = false;
+    this.p4Winner = false;
+  }
+
   onCalculate(form: NgForm){
     let a,b,c,d,e;
     a = this.event_p1 ? parseFloat(this.event_p1) : 0;
@@ -138,5 +234,9 @@ export class ScoringPage {
           ]
         });
     prompt.present();
+  }
+
+  onOpenStats(){
+    this.navCtrl.push(StatPage);
   }
 }

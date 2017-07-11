@@ -1,23 +1,18 @@
 page-scoring {
-.main {
-        background-image: url('../assets/img/outlive-background2.jpg');
-        -webkit-background-image: url('../assets/img/outlive-background2.jpg');
-        background-repeat: no-repeat;
-        background-size:cover;
-    }
-    .backbutton{
+    ion-navbar{
         background-color: transparent;
-        height: 45px;
-    }   
+    }
+    .rightButton{
+        width: 40px;
+    }
     .playerName{
         color: #ffffff;
-        font-size: 10px;
+        font-size: 12px;
         padding: 0px;
         margin: 0;
-    }
-   
+    }   
     .input{
-        background-color: rgba(0,0,0,0.7);
+        background-color: rgba(0,0,0,0.5);
         border-radius: 5px;
         color: #ffffff;
         text-align: center;

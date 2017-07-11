@@ -1,10 +1,8 @@
 page-horde {
-    .main {
-        background-image: url('../assets/img/outlive-background2.jpg');
-        -webkit-background-image: url('../assets/img/outlive-background2.jpg');
-        background-repeat: no-repeat;
-        background-size:cover;
-    }    
+    .imageDetail{
+        margin: auto;
+        position: relative;
+    }   
     .cardButton{
         background-color: transparent;
         width: 100%;
@@ -19,7 +17,13 @@ page-horde {
         padding: 0px;
         margin: 1px;
     }
-    
+    .squareButtonCity{
+        background-color: transparent;
+        height: 70px;
+        width: 70px;
+        padding: 0px;
+        margin: 1px;
+    }
     .hordeDeck{
         background-color: transparent;
         z-index:0;

@@ -1,8 +1,10 @@
 page-map {
-    .main {
-        background-image: url('../assets/img/outlive-background2.jpg');
-        -webkit-background-image: url('../assets/img/outlive-background2.jpg');
-        background-repeat: no-repeat;
-        background-size:cover;
+    
+    .squareButton{
+        background-color: transparent;
+        height: 70px;
+        width: 70px;
+        padding: 0px;
+        margin: 2px;
     }
 }

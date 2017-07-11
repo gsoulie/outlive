@@ -1,10 +1,18 @@
-<ion-content class="main"> 
+<ion-header>
+  <ion-navbar>    
+    <ion-title>Scores</ion-title>
+    <ion-buttons end>
+      <button class="rightButton" ion-button icon-only (click)="onOpenStats()">
+        <ion-icon name="md-stats"></ion-icon>
+      </button>
+      <button class="rightButton" ion-button icon-only (click)="onSave()">
+        <ion-icon name="md-checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content class="main2"> 
   <div class="overviewWithoutOverlay">
-    <button ion-button class="backbutton" (click)="back()"
-      text-center clear icon-only color="snow">
-      <ion-icon color="snow" name="md-arrow-back"></ion-icon>
-      <ion-label color="snow">Retour</ion-label>
-    </button>
       <ion-grid>
         <ion-row>
           <ion-col col-3 text-center class="playerCell">
@@ -37,7 +45,7 @@
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col text-center>
+          <ion-col>
           <h5>Evénement</h5>
           </ion-col>
         </ion-row>
@@ -56,7 +64,7 @@
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col text-center>
+          <ion-col>
           <h5>Salles</h5>
           </ion-col>
         </ion-row>
@@ -75,7 +83,7 @@
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col text-center>
+          <ion-col>
           <h5>Radioactivité</h5>
           </ion-col>
         </ion-row>
@@ -94,7 +102,7 @@
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col text-center>
+          <ion-col>
           <h5>Survivants</h5>
           </ion-col>
         </ion-row>
@@ -113,7 +121,7 @@
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col text-center>
+          <ion-col>
             <h5>Equipements</h5>
           </ion-col>
         </ion-row>
@@ -132,7 +140,7 @@
           </ion-col>
         </ion-row>
     <ion-row>
-      <ion-col text-center>
+      <ion-col>
         <h5>TOTAL</h5>
       </ion-col>
     </ion-row>
@@ -142,7 +150,7 @@
         <ion-input *ngIf="!p1Winner" class="input" text-center readonly="true" [(ngModel)]="t1" [style.backgroundColor]="'rgba(0,0,0,0.5)'"></ion-input>
       </ion-col>
       <ion-col col-3>
-        <ion-input *ngIf="p2Winner" class="input" text-center readonly="true" [(ngModel)]="t2" [style.backgroundColor]="'#f1c40f'"></ion-input>
+        <ion-input *ngIf="p2Winner" class="input" text-center readonly="true" [(ngModel)]="t2" [style.backgroundColor]="'#F5DEB3'"></ion-input>
         <ion-input *ngIf="!p2Winner" class="input" text-center readonly="true" [(ngModel)]="t2" [style.backgroundColor]="'rgba(0,0,0,0.5)'"></ion-input>
       </ion-col>
       <ion-col col-3>

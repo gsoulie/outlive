@@ -1,3 +1,4 @@
+import { StatPage } from './../pages/stat/stat';
 import { HordePage } from './../pages/horde/horde';
 import { ScoringPage } from './../pages/scoring/scoring';
 import { Config } from './../providers/config';
@@ -13,6 +14,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DataProvider } from '../providers/data/data';
+import { IonicStorageModule } from '@ionic/storage';
+import { UiProvider } from '../providers/ui/ui';
 
 @NgModule({
   declarations: [
@@ -20,11 +23,13 @@ import { DataProvider } from '../providers/data/data';
     HomePage,
     MapPage,
     ScoringPage,
-    HordePage
+    HordePage,
+    StatPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -32,7 +37,8 @@ import { DataProvider } from '../providers/data/data';
     HomePage,
     MapPage,
     ScoringPage,
-    HordePage
+    HordePage,
+    StatPage
   ],
   providers: [
     StatusBar,
@@ -41,7 +47,8 @@ import { DataProvider } from '../providers/data/data';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataProvider,
     Http,
-    Config
+    Config,
+    UiProvider
   ]
 })
 export class AppModule {}

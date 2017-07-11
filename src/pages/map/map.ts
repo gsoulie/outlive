@@ -17,16 +17,16 @@ export class MapPage implements OnInit{
   initTileBlackwood: boolean = true;  // indique si c'est le premier chargement (on n'affiche pas le liseret jaune)
   initTileSilentPeak: boolean = true;
   extension: boolean = false;
+  currentBlackwoodTile: any = {};
+  currentSilentpeakTile: any = {};
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              /*private screenOrientation: ScreenOrientation,*/
               private data: DataProvider) {}
 
   ngOnInit(){
     this.nbSurvivor = this.navParams.get("nbSurvivor") || "4";
     this.extension = this.navParams.get("extension") || false;
-    //this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
   }
   ionViewDidLoad() {
     this.onResetTiles();
@@ -39,6 +39,8 @@ export class MapPage implements OnInit{
     this.blackWoodDiscardTiles = this.data.getBlackwoodDiscardedTiles();
     this.initTileBlackwood = true;
     this.initTileSilentPeak = true;
+    this.currentBlackwoodTile = {};
+    this.currentSilentpeakTile = {};
   }
 
   /**
@@ -53,6 +55,7 @@ export class MapPage implements OnInit{
     
       // ajouter la tuile piochées dans la silentPeakDiscardTile
       this.silentPeakDiscardTiles.push(this.silentPeakTiles[tileIndex]);
+      this.currentSilentpeakTile = this.silentPeakTiles[tileIndex];
       this.silentPeakTiles.splice(tileIndex,1);
     }
   }
@@ -68,13 +71,9 @@ export class MapPage implements OnInit{
       tileIndex--;
 
       // ajouter la tuile piochées dans la blackWoodDiscardTiles
-      this.blackWoodDiscardTiles.push(this.blackWoodTiles[tileIndex]);
-      //this.blackWoodDiscardTiles.reverse();
+      this.blackWoodDiscardTiles.push(this.blackWoodTiles[tileIndex]);      //this.blackWoodDiscardTiles.reverse();
+      this.currentBlackwoodTile = this.blackWoodTiles[tileIndex];
       this.blackWoodTiles.splice(tileIndex,1);
     }
-  }
-
-  back(){
-    this.navCtrl.pop();
   }
 }

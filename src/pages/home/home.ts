@@ -15,6 +15,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {
   }
+
   onStart(){
     console.log("start " + this.nbSurvivor);
     
@@ -31,7 +32,6 @@ export class HomePage {
         this.onOpenMap();
         break
     }
-
   }
   onOpenMap(){
     this.navCtrl.push(MapPage,{nbSurvivor: this.nbSurvivor,extension: this.extension});
