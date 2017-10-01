@@ -11,10 +11,10 @@ import { NgForm } from '@angular/forms';
   templateUrl: 'scoring.html',
 })
 export class ScoringPage {
-  p1Name: string = "Survivant 1";
-  p2Name: string = "Survivant 2";
-  p3Name: string = "Survivant 3";
-  p4Name: string = "Survivant 4";
+  p1Name: string = this.db.player1Name || "Survivant 1";
+  p2Name: string = this.db.player2Name || "Survivant 2";
+  p3Name: string = this.db.player3Name || "Survivant 3";
+  p4Name: string = this.db.player4Name || "Survivant 4";
   event_p1: any;
   event_p2: any;
   event_p3: any;
@@ -63,7 +63,7 @@ export class ScoringPage {
       let entry = new Score(new Date().toString(),{
         name: this.p1Name,
         event: this.event_p1,
-        room: this.room_p1,
+        room: this.onCalculateRoomScore(parseFloat(this.room_p1)),
         rad: this.rad_p1,
         survivor: this.survivor_p1,
         stuff: this.stuff_p1,
@@ -72,7 +72,7 @@ export class ScoringPage {
       },{
         name: this.p2Name,
         event: this.event_p2,
-        room: this.room_p2,
+        room: this.onCalculateRoomScore(parseFloat(this.room_p2)),
         rad: this.rad_p2,
         survivor: this.survivor_p2,
         stuff: this.stuff_p2,
@@ -81,7 +81,7 @@ export class ScoringPage {
       },{
         name: this.p3Name,
         event: this.event_p3,
-        room: this.room_p3,
+        room: this.onCalculateRoomScore(parseFloat(this.room_p3)),
         rad: this.rad_p3,
         survivor: this.survivor_p3,
         stuff: this.stuff_p3,
@@ -90,7 +90,7 @@ export class ScoringPage {
       },{
         name: this.p4Name,
         event: this.event_p4,
-        room: this.room_p4,
+        room: this.onCalculateRoomScore(parseFloat(this.room_p4)),
         rad: this.rad_p4,
         survivor: this.survivor_p4,
         stuff: this.stuff_p4,
@@ -145,10 +145,37 @@ export class ScoringPage {
     this.p4Winner = false;
   }
 
+  /**
+   * Calcul le score en fonction du nombre de salles remplies
+   * @param nbRoom : nombre de salles pleines
+   *  1 2 3 4 5 6     7
+   *  0 1 2 4 7 11    17
+   */
+  onCalculateRoomScore(nbRoom: number = 0){
+    switch(nbRoom){
+      case 1 :
+        return 0;
+      case 2 :
+        return 1;
+      case 3 :
+        return 2;
+      case 4 : 
+        return 4;
+      case 5 :
+        return 7;
+      case 6 :
+        return 11;
+      case 7 :
+        return 17;
+      default: 
+        return 0;
+    }
+  }
+
   onCalculate(form: NgForm){
     let a,b,c,d,e;
     a = this.event_p1 ? parseFloat(this.event_p1) : 0;
-    b = this.room_p1 ? parseFloat(this.room_p1) : 0;
+    b = this.room_p1 ? this.onCalculateRoomScore(parseFloat(this.room_p1)) : 0;
     c = this.rad_p1 ? parseFloat(this.rad_p1) : 0;
     d = this.survivor_p1 ? parseFloat(this.survivor_p1) : 0;
     e = this.stuff_p1 ? parseFloat(this.stuff_p1) : 0;
@@ -156,7 +183,7 @@ export class ScoringPage {
     this.t1 = a+b+c+d+e;
 
     a = this.event_p2 ? parseFloat(this.event_p2) : 0;
-    b = this.room_p2 ? parseFloat(this.room_p2) : 0;
+    b = this.room_p2 ? this.onCalculateRoomScore(parseFloat(this.room_p2)) : 0;
     c = this.rad_p2 ? parseFloat(this.rad_p2) : 0;
     d = this.survivor_p2 ? parseFloat(this.survivor_p2) : 0;
     e = this.stuff_p2 ? parseFloat(this.stuff_p2) : 0;
@@ -164,7 +191,7 @@ export class ScoringPage {
     this.t2 = a+b+c+d+e;
 
     a = this.event_p3 ? parseFloat(this.event_p3) : 0;
-    b = this.room_p3 ? parseFloat(this.room_p3) : 0;
+    b = this.room_p3 ? this.onCalculateRoomScore(parseFloat(this.room_p3)) : 0;
     c = this.rad_p3 ? parseFloat(this.rad_p3) : 0;
     d = this.survivor_p3 ? parseFloat(this.survivor_p3) : 0;
     e = this.stuff_p3 ? parseFloat(this.stuff_p3) : 0;
@@ -172,7 +199,7 @@ export class ScoringPage {
     this.t3 = a+b+c+d+e;
 
     a = this.event_p4 ? parseFloat(this.event_p4) : 0;
-    b = this.room_p4 ? parseFloat(this.room_p4) : 0;
+    b = this.room_p4 ? this.onCalculateRoomScore(parseFloat(this.room_p4)) : 0;
     c = this.rad_p4 ? parseFloat(this.rad_p4) : 0;
     d = this.survivor_p4 ? parseFloat(this.survivor_p4) : 0;
     e = this.stuff_p4 ? parseFloat(this.stuff_p4) : 0;
@@ -218,15 +245,19 @@ export class ScoringPage {
                 switch(playerIndex){
                   case 1 :
                     this.p1Name = data.Survivant;
+                    this.db.player1Name = data.Survivant;
                     break;
                   case 2 :
                     this.p2Name = data.Survivant;
+                    this.db.player2Name = data.Survivant;
                     break;
                   case 3 :
                     this.p3Name = data.Survivant;
+                    this.db.player3Name = data.Survivant;
                     break;
                   case 4 :
                     this.p4Name = data.Survivant;
+                    this.db.player4Name = data.Survivant;
                     break;
                 }
               }

@@ -12,6 +12,7 @@ export class HomePage {
   nbSurvivor: string = "4";
   players: any = {};
   extension: boolean = false;
+  versionCode: string = "1.0.7";
 
   constructor(public navCtrl: NavController) {
   }

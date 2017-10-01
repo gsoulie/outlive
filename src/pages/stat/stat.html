@@ -10,19 +10,55 @@
 </ion-header>
 <ion-content class="main2"> 
   <div class="overviewWithoutOverlay">
-    <ion-list *ngFor="let i of scoreTab">
-      <button ion-item no-lines class="scoreItemHead" text-center>
-        <ion-label class="name" color="player1" *ngIf="i.p1.total > 0">{{ i.p1.name }}</ion-label>
-        <ion-label class="name" color="player2" *ngIf="i.p2.total > 0">{{ i.p2.name }}</ion-label>
-        <ion-label class="name" color="player3" *ngIf="i.p3.total > 0">{{ i.p3.name }}</ion-label>
-        <ion-label class="name" color="player4" *ngIf="i.p4.total > 0">{{ i.p4.name }}</ion-label>
+    <ion-list *ngFor="let i of scoreTab; let id=index">
+      <button ion-item no-lines class="scoreItemHead" text-center (click)="onShowHideDetail(id)">
+        <ion-label class="name" color="player1" *ngIf="i.scoreLine.p1.total > 0">{{ i.scoreLine.p1.name }}</ion-label>
+        <ion-label class="name" color="player2" *ngIf="i.scoreLine.p2.total > 0">{{ i.scoreLine.p2.name }}</ion-label>
+        <ion-label class="name" color="player3" *ngIf="i.scoreLine.p3.total > 0">{{ i.scoreLine.p3.name }}</ion-label>
+        <ion-label class="name" color="player4" *ngIf="i.scoreLine.p4.total > 0">{{ i.scoreLine.p4.name }}</ion-label>
       </button>
-      <button ion-item no-lines class="scoreItem" text-center>
-        <ion-label class="score" color="snow" *ngIf="i.p1.total > 0">{{ i.p1.total }}</ion-label>
-        <ion-label class="score" color="snow" *ngIf="i.p2.total > 0">{{ i.p2.total }}</ion-label>
-        <ion-label class="score" color="snow" *ngIf="i.p3.total > 0">{{ i.p3.total }}</ion-label>
-        <ion-label class="score" color="snow" *ngIf="i.p4.total > 0">{{ i.p4.total }}</ion-label>
+      <button ion-item no-lines class="scoreItem" text-center (click)="onShowHideDetail(id)">
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p1.total > 0">{{ i.scoreLine.p1.total }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p2.total > 0">{{ i.scoreLine.p2.total }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p3.total > 0">{{ i.scoreLine.p3.total }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p4.total > 0">{{ i.scoreLine.p4.total }}</ion-label>
       </button>
+      <div class="separator" *ngIf="i.show == true"></div>
+      <ion-item no-lines class="scoreItem" *ngIf="i.show == true" text-center>
+        <ion-icon name="md-flash" color="snow" class="headLineIcon" item-left></ion-icon>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p1.total > 0">{{ i.scoreLine.p1.event }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p2.total > 0">{{ i.scoreLine.p2.event }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p3.total > 0">{{ i.scoreLine.p3.event }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p4.total > 0">{{ i.scoreLine.p4.event }}</ion-label>
+      </ion-item>
+      <ion-item no-lines class="scoreItem" *ngIf="i.show == true" text-center>
+        <ion-icon name="md-home" color="snow" class="headLineIcon" item-left></ion-icon>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p1.total > 0">{{ i.scoreLine.p1.room }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p2.total > 0">{{ i.scoreLine.p2.room }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p3.total > 0">{{ i.scoreLine.p3.room }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p4.total > 0">{{ i.scoreLine.p4.room }}</ion-label>
+      </ion-item>
+      <ion-item no-lines class="scoreItem" *ngIf="i.show == true" text-center>
+          <ion-icon name="ios-nuclear" color="snow" class="headLineIcon" item-left></ion-icon>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p1.total > 0">{{ i.scoreLine.p1.rad }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p2.total > 0">{{ i.scoreLine.p2.rad }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p3.total > 0">{{ i.scoreLine.p3.rad }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p4.total > 0">{{ i.scoreLine.p4.rad }}</ion-label>
+      </ion-item>
+      <ion-item no-lines class="scoreItem" *ngIf="i.show == true" text-center>
+          <ion-icon name="ios-body" color="snow" class="headLineIcon" item-left></ion-icon>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p1.total > 0">{{ i.scoreLine.p1.survivor }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p2.total > 0">{{ i.scoreLine.p2.survivor }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p3.total > 0">{{ i.scoreLine.p3.survivor }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p4.total > 0">{{ i.scoreLine.p4.survivor }}</ion-label>
+      </ion-item>
+      <ion-item no-lines class="scoreItem" *ngIf="i.show == true" text-center>
+        <ion-icon name="md-build" color="snow" class="headLineIcon" item-left></ion-icon>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p1.total > 0">{{ i.scoreLine.p1.stuff }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p2.total > 0">{{ i.scoreLine.p2.stuff }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p3.total > 0">{{ i.scoreLine.p3.stuff }}</ion-label>
+        <ion-label class="score" color="snow" *ngIf="i.scoreLine.p4.total > 0">{{ i.scoreLine.p4.stuff }}</ion-label>
+      </ion-item>
     </ion-list>
   </div>
 </ion-content>

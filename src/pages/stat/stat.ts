@@ -9,7 +9,8 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 })
 export class StatPage {
 
-  scoreTab: Score[] = [];
+  //scoreTab: Score[] = [];
+  scoreTab: any[] = [];
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public db: DataProvider,
@@ -20,7 +21,11 @@ export class StatPage {
   ngOnInit(){
     this.db.onfetchScore()
     .then((data: Score[]) => {
-      this.scoreTab = data;
+      //this.scoreTab = data;
+      //console.log("SCORE : " + JSON.stringify(data));
+      for(let i = 0; i < data.length; i++){
+        this.scoreTab.push({show: false, scoreLine: data[i]});
+      }
     });
   }
 
@@ -45,5 +50,11 @@ export class StatPage {
       ]
     });
     confirm.present();
+  }
+
+  onShowHideDetail(index: number){
+    if(index <= this.scoreTab.length){
+      this.scoreTab[index].show = !this.scoreTab[index].show;
+    }
   }
 }

@@ -43,7 +43,7 @@ ion-navbar{
 .formContainer{
   position: absolute;
   //bottom: 20%;
-  top: 33%;
+  top: 30%;
   left: 50px;
   right: 50px;
 }
@@ -94,4 +94,17 @@ img{
     width: 70px;
     padding: 0px;
     margin: 1px;
+}
+.separator{
+    height: 1px;
+    background-color: #ffffff;
+    opacity: 0.2;
+}
+.centeredButton{
+    position: relative;
+    left: 10px;
+    right: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

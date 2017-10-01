@@ -37,6 +37,11 @@ export class DataProvider {
     {id:7, image: "assets/img/horde-7.png"},{id:8, image: "assets/img/horde-8.png"},
   ];
 
+  player1Name: string = "";
+  player2Name: string = "";
+  player3Name: string = "";
+  player4Name: string = "";
+
   private scoreHistory: Score[] = [];
 
   constructor(private storage: Storage) {}
@@ -95,6 +100,7 @@ export class DataProvider {
         tileStack.splice(idx,1);
       }
     }
+    this.shuffle(tileStack);
     return tileStack;
   }
 
@@ -205,5 +211,19 @@ export class DataProvider {
     .catch(
       err => console.log(err)
     );
+  }
+
+  /**
+   * Shuffles array in place.
+   * @param {Array} a items The array containing the items.
+   */
+  shuffle(a) {
+      var j, x, i;
+      for (i = a.length; i; i--) {
+          j = Math.floor(Math.random() * i);
+          x = a[i - 1];
+          a[i - 1] = a[j];
+          a[j] = x;
+      }
   }
 }

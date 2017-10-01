@@ -1,7 +1,9 @@
+import { MapPopoverPage } from './../map-popover/map-popover';
+import { StackPage } from './../stack/stack';
 import { Config } from './../../providers/config';
 import { DataProvider } from './../../providers/data/data';
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, PopoverController } from 'ionic-angular';
 
 @Component({
   selector: 'page-map',
@@ -22,7 +24,8 @@ export class MapPage implements OnInit{
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              private data: DataProvider) {}
+              private data: DataProvider,
+              private popoverCtrl: PopoverController) {}
 
   ngOnInit(){
     this.nbSurvivor = this.navParams.get("nbSurvivor") || "4";
@@ -50,8 +53,9 @@ export class MapPage implements OnInit{
     // Choisir la tuile en faisant un random sur le nombre de tuiles de la pile 
     if(this.silentPeakTiles.length > 0){
       this.initTileSilentPeak = false;
-      let tileIndex = Math.floor(Math.random() * this.silentPeakTiles.length) + 1; // chiffre random entre 1 et 10
-      tileIndex--;
+      /*let tileIndex = Math.floor(Math.random() * this.silentPeakTiles.length) + 1; // chiffre random entre 1 et 10
+      tileIndex--;*/
+      let tileIndex = 0;
     
       // ajouter la tuile piochées dans la silentPeakDiscardTile
       this.silentPeakDiscardTiles.push(this.silentPeakTiles[tileIndex]);
@@ -67,13 +71,31 @@ export class MapPage implements OnInit{
     // Choisir la tuile en faisant un random sur le nombre de tuiles de la pile 
     if(this.blackWoodTiles.length > 0){
       this.initTileBlackwood = false;
-      let tileIndex = Math.floor(Math.random() * this.blackWoodTiles.length) + 1; // chiffre random entre 1 et 10
-      tileIndex--;
+      /*let tileIndex = Math.floor(Math.random() * this.blackWoodTiles.length) + 1; // chiffre random entre 1 et 10
+      tileIndex--;*/
+      let tileIndex = 0;
 
       // ajouter la tuile piochées dans la blackWoodDiscardTiles
       this.blackWoodDiscardTiles.push(this.blackWoodTiles[tileIndex]);      //this.blackWoodDiscardTiles.reverse();
       this.currentBlackwoodTile = this.blackWoodTiles[tileIndex];
       this.blackWoodTiles.splice(tileIndex,1);
     }
+  }
+
+  onViewStack(){
+    this.navCtrl.push(StackPage,{stack: this.blackWoodTiles});
+  }
+
+  presentPopover(ev) {
+
+    /*let popover = this.popoverCtrl.create(PopoverPage, {
+      contentEle: this.content.nativeElement,
+      textEle: this.text.nativeElement
+    });*/
+    let popover = this.popoverCtrl.create(MapPopoverPage);
+
+    popover.present({
+      ev: ev
+    });
   }
 }

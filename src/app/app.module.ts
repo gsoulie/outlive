@@ -1,3 +1,5 @@
+import { MapPopoverPage } from './../pages/map-popover/map-popover';
+import { StackPage } from './../pages/stack/stack';
 import { StatPage } from './../pages/stat/stat';
 import { HordePage } from './../pages/horde/horde';
 import { ScoringPage } from './../pages/scoring/scoring';
@@ -10,7 +12,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
+import { AppVersion } from '@ionic-native/app-version';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DataProvider } from '../providers/data/data';
@@ -24,7 +26,9 @@ import { UiProvider } from '../providers/ui/ui';
     MapPage,
     ScoringPage,
     HordePage,
-    StatPage
+    StatPage,
+    StackPage,
+    MapPopoverPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,9 @@ import { UiProvider } from '../providers/ui/ui';
     MapPage,
     ScoringPage,
     HordePage,
-    StatPage
+    StatPage,
+    StackPage,
+    MapPopoverPage
   ],
   providers: [
     StatusBar,
@@ -48,7 +54,8 @@ import { UiProvider } from '../providers/ui/ui';
     DataProvider,
     Http,
     Config,
-    UiProvider
+    UiProvider,
+    AppVersion
   ]
 })
 export class AppModule {}

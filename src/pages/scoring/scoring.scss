@@ -17,8 +17,13 @@ page-scoring {
         color: #ffffff;
         text-align: center;
         border: 1px solid transparent;
-        height: 35px;
-        margin-top: 0;
+        height: 30px;
+        margin-top: -5px;
+        margin-bottom: -5px;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        
     }
     h5{
         color: #ffffff;
